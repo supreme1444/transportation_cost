@@ -26,6 +26,7 @@
 6. **Запустите контейнер базы данных:**:
      - Запустите контейнер базы данных docker-compose up -d
 7. **Запуск приложения**:
+     - Создать файл .env DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/postgres
      - Сделайть миграции alembic revision --autogenerate -m "базовая миграция 1"
      - Применить миграции alembic upgrade head 
      - Запуск сервера uvicorn main:app --reload  
