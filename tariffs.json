@@ -1,0 +1,50 @@
+{
+    "2020-06-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": 0.04
+        },
+        {
+            "cargo_type": "Other",
+            "rate": 0.01
+        }
+    ],
+    "2022-03-10": [
+        {
+            "cargo_type": "Clothing",
+            "rate": 0.03
+        },
+        {
+            "cargo_type": "Books",
+            "rate": 0.015
+        },
+        {
+            "cargo_type": "Toys",
+            "rate": 0.025
+        }
+    ],
+    "2023-05-20": [
+        {
+            "cargo_type": "Automotive Parts",
+            "rate": 0.06
+        },
+        {
+            "cargo_type": "Machinery",
+            "rate": 0.04
+        }
+    ],
+    "2024-08-30": [
+        {
+            "cargo_type": "Food",
+            "rate": 0.02
+        },
+        {
+            "cargo_type": "Pharmaceuticals",
+            "rate": 0.07
+        },
+        {
+            "cargo_type": "Chemicals",
+            "rate": 0.05
+        }
+    ]
+}
