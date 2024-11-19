@@ -5,9 +5,9 @@ services:
     container_name: postgre_db5
     image: postgres:16
     environment:
-      POSTGRES_USER: 111
-      POSTGRES_PASSWORD: 111
-      POSTGRES_DB: insurance_db2
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     ports:
       - "5432:5432"
 
