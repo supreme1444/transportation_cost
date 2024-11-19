@@ -10,15 +10,6 @@ services:
       POSTGRES_DB: postgres
     ports:
       - "5432:5432"
-  app:
-    container_name: fastapi_app
-    build:
-      context: .
-    volumes:
-      - ./app:/app
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
+  
 
 
