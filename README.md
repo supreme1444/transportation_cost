@@ -26,8 +26,10 @@
 6. **Запустите контейнер базы данных:**:
      - Запустите контейнер базы данных docker-compose up -d
 7. **Запуск приложения**:
-     - Запуск сервера uvicorn main:app --reload
-
+     - Создать и заполнить .env файл с подключением.
+     - Сделайть миграции alembic revision --autogenerate -m "базовая миграция 1"
+     - Применить миграции alembic upgrade head 
+     - Запуск сервера uvicorn main:app --reload  
 8.  Войти по адрессу http://127.0.0.1:8000/docs#/ и протестировать эндпоинт /calculate-insurance/ с помощью Postman или cURL, отправив POST-запрос с JSON-данными:
     **Пример**
 {
