@@ -11,11 +11,13 @@ producer = KafkaProducer(
 )
 
 
-def log_event(user_id, action):
+def log_event(user_id, action, timestamp=None):
+    if timestamp is None:
+        timestamp = datetime.utcnow().isoformat()
     event_message = {
         'user_id': user_id,
         'action': action,
-        'timestamp': datetime.utcnow().isoformat()
+        'timestamp': timestamp
     }
     logger.info(f"Logging event: {event_message}")
     producer.send('your_topic_name', event_message)
