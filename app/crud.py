@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime
 
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -16,8 +16,8 @@ async def get_rate(db: AsyncSession, date: datetime, cargo_type: str):
     )
     log_event(
         user_id=None,
-        action=f"Получение тарифа: {Tariff.id} для типа груза '{cargo_type}' на дату {date}",
-        timestamp=datetime.now(timezone.utc).isoformat()
+        action=f"Получение тарифа для типа груза '{cargo_type}' на дату {date}",
+        timestamp=datetime.utcnow().isoformat()
     )
     return result.scalar_one_or_none()
 
@@ -42,7 +42,7 @@ async def edit_insurance_rate(db: AsyncSession, id: int, new_edit_rate: float, n
     log_event(
         user_id=None,
         action=f"Редактирование тарифа ID {id}: новый тариф {new_edit_rate}, новый тип груза {new_edit_cargo}",
-        timestamp=datetime.now(timezone.utc).isoformat()
+        timestamp=datetime.utcnow().isoformat()
     )
 
     await db.commit()
@@ -59,7 +59,7 @@ async def delete_insurance_rate(db: AsyncSession, id: int):
     log_event(
         user_id=None,
         action=f"Удаление тарифа ID {id}",
-        timestamp=datetime.now(timezone.utc).isoformat())
+        timestamp=datetime.utcnow().isoformat())
     await db.delete(delete_tariff)
     await db.commit()
     return delete_tariff
