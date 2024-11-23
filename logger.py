@@ -13,7 +13,7 @@ producer = KafkaProducer(
 
 def log_event(user_id, action, timestamp=None):
     if timestamp is None:
-        timestamp = datetime.utcnow().isoformat()
+        timestamp = datetime.now(timezone.utc).isoformat()
     event_message = {
         'user_id': user_id,
         'action': action,
