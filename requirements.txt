@@ -1,10 +1,10 @@
-fastapi
+fastapi~=0.111.1
 uvicorn
-sqlalchemy
+sqlalchemy~=2.0.31
 asyncpg
-databases
-pydantic
-python-dotenv
-alembic
+databases~=0.9.0
+pydantic~=2.8.2
+python-dotenv~=1.0.1
+alembic~=1.13.2
 psycopg2
 kafka-python
