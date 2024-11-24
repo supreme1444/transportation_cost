@@ -12,8 +12,11 @@ router = APIRouter()
 
 @router.post("/calculate-insurance/", response_model=InsuranceResponse)
 async def calculate_insurance(request: InsuranceRequest, db: AsyncSession = Depends(get_db)):
-    """
+   """
     Асинхронный эндпоинт для расчета стоимости страховки.
+    Введите дату "date_request-2022-03-10"
+    Тип груза "cargo_type-Clothing"
+    Стоимость груза "declared_value-40000".
     """
     try:
         cost = await calculate_insurance_cost(db, request.date_request, request.cargo_type, request.declared_value)
@@ -25,7 +28,10 @@ async def calculate_insurance(request: InsuranceRequest, db: AsyncSession = Depe
 @router.delete("/edit-insurance/", response_model=EditRateResponse)
 async def edit_insurance(request: EditRateRequest, db: AsyncSession = Depends(get_db)):
     """
-        Асинхронный эндпоинт для редактирования тарифа.
+    Асинхронный эндпоинт для редактирования тарифа.
+    Введите id тарифа "id-3"и отредактируйте его условия.
+    Тариф "rate-0.03"
+    Тип груза "cargo_type-Clothing"
     """
     try:
         edit = await edit_insurance_services(db, request.id, request.rate, request.cargo_type)
@@ -37,7 +43,8 @@ async def edit_insurance(request: EditRateRequest, db: AsyncSession = Depends(ge
 @router.post("/delete-rate/", response_model=AddRateRespons)
 async def add_rate(request: AddRateRequest, db: AsyncSession = Depends(get_db)):
     """
-        Асинхронный эндпоинт для удаления тарифа.
+    Асинхронный эндпоинт для добавления тарифа.
+    Введите id тарифа какой хотите удалить.
     """
     try:
         await delete_rate_services(db, request.id)
