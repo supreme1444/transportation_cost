@@ -1,0 +1,15 @@
+2024-11-23 11:58:37,718 - INFO - BEGIN (implicit)
+2024-11-23 11:58:37,719 - INFO - SELECT cargo_rates.id, cargo_rates.cargo_type, cargo_rates.rate, cargo_rates.date 
+FROM cargo_rates 
+WHERE cargo_rates.id = $1::INTEGER
+2024-11-23 11:58:37,719 - INFO - [cached since 15.81s ago] (5,)
+2024-11-23 11:58:37,721 - INFO - Logging event: {'user_id': None, 'action': '�������������� ������ ID 5: ����� ����� 0.55, ����� ��� ����� ���', 'timestamp': '2024-11-23T08:58:37.721962'}
+2024-11-23 11:58:37,725 - INFO - UPDATE cargo_rates SET cargo_type=$1::VARCHAR WHERE cargo_rates.id = $2::INTEGER
+2024-11-23 11:58:37,725 - INFO - [cached since 15.8s ago] ('���', 5)
+2024-11-23 11:58:37,727 - INFO - COMMIT
+2024-11-23 12:03:17,617 - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv6 ('::1', 29092, 0, 0)]>: connecting to localhost:29092 [('::1', 29092, 0, 0) IPv6]
+2024-11-23 12:03:17,617 - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv6 ('::1', 29092, 0, 0)]>: Connection complete.
+2024-11-23 12:03:17,617 - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connected> [IPv6 ('::1', 29092, 0, 0)]>: Closing connection. 
+2024-11-23 12:03:17,646 - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv6 ('::1', 29092, 0, 0)]>: connecting to localhost:29092 [('::1', 29092, 0, 0) IPv6]
+2024-11-23 12:03:17,647 - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv6 ('::1', 29092, 0, 0)]>: Connection complete.
+2024-11-23 12:03:17,647 - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connected> [IPv6 ('::1', 29092, 0, 0)]>: Closing connection. 
