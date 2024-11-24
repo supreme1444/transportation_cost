@@ -13,8 +13,7 @@ logger.addHandler(file_handler)
 
 producer = KafkaProducer(
     bootstrap_servers='localhost:29092',
-    value_serializer=lambda v: json.dumps(v, ensure_ascii=False).encode('utf-8')
-    # Убедитесь, что символы не ASCII тоже сериализуются
+    value_serializer=lambda v: json.dumps(v, ensure_ascii=False).encode('utf-8')    
 )
 
 
