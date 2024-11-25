@@ -24,9 +24,9 @@ class EditRateResponse(BaseModel):
     rate: float
 
 
-class AddRateRequest(BaseModel):
+class DeleteRateRequest(BaseModel):
     id: int
 
 
-class AddRateRespons(BaseModel):
+class DeleteRateRespons(BaseModel):
     message: str
