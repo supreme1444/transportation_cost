@@ -57,6 +57,9 @@ async def delete_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get
 
 @router.post("/add-rate/", response_model=AddRateRespons)
 async def add_rate(request: AddRateRequest, db: AsyncSession = Depends(get_db)):
+    """
+    Асинхронный эндпоинт для добавления тарифа.
+    """
     try:
         await add_rate_services(db, request.date_request, request.cargo_type, request.rate)
         return {
