@@ -10,15 +10,15 @@ async def calculate_insurance_cost(db: AsyncSession, date: datetime, cargo_type:
     return declared_value * rate.rate
 
 
-async def edit_insurance_services(db: AsyncSession, id: int, new_edit_rate: float, new_edit_cargo: str):
-    edited_tariff = await edit_insurance_rate(db, id, new_edit_rate, new_edit_cargo)
+async def edit_insurance_services(db: AsyncSession, id_rate: int, new_edit_rate: float, new_edit_cargo: str):
+    edited_tariff = await edit_insurance_rate(db, id_rate, new_edit_rate, new_edit_cargo)
     if not edited_tariff:
         raise ValueError("Тариф не найден")
     return edited_tariff
 
 
-async def delete_rate_services(db: AsyncSession, id: int):
-    delete_rate = await delete_insurance_rate(db, id)
+async def delete_rate_services(db: AsyncSession, id_rate: int):
+    delete_rate = await delete_insurance_rate(db, id_rate)
     if not delete_rate:
         raise ValueError("Тариф не найден")
     return delete_rate
