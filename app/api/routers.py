@@ -25,7 +25,7 @@ async def calculate_insurance(request: InsuranceRequest, db: AsyncSession = Depe
         raise HTTPException(status_code=404, detail=str(e))
 
 
-@router.patch("/edit-insurance/", response_model=EditRateResponse)
+@router.patch("/edit-rate/", response_model=EditRateResponse)
 async def edit_rate(request: EditRateRequest, db: AsyncSession = Depends(get_db)):
     """
     Асинхронный эндпоинт для редактирования тарифа.
