@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.crud import get_rate, edit_insurance_rate, delete_insurance_rate
+from app.crud import get_rate, edit_insurance_rate, delete_insurance_rate, add_insurance_rate
 
 
 async def calculate_insurance_cost(db: AsyncSession, date: datetime, cargo_type: str, declared_value: float) -> float:
@@ -31,3 +31,13 @@ async def delete_rate_services(db: AsyncSession, id: int):
     if not delete_rate:
         raise ValueError("Тариф не найден")
     return delete_rate
+
+
+async def add_rate_services(db: AsyncSession, date_request: datetime, cargo: str, rate: float):
+    add_rate = await add_insurance_rate(db, date_request, cargo, rate)
+     """
+    Функция для добавления страховых услуг.
+    """
+    if not add_rate:
+        raise ValueError("Тариф не найден")
+    return add_rate
