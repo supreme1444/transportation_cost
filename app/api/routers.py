@@ -2,8 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.schemas.schemas_tariff import (InsuranceRequest, InsuranceResponse,
                                         EditRateResponse,
-                                        EditRateRequest, DeleteRateRespons, DeleteRateRequest, AddRateRespons,
-                                        AddRateRequest, )
+                                        EditRateRequest, DeleteRateRespons, DeleteRateRequest, )
 from app.database.database import get_db
 from app.services.services import calculate_insurance_cost, edit_insurance_services, delete_rate_services, \
     add_rate_services
@@ -49,15 +48,6 @@ async def delete_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get
     """
     try:
         result = await delete_rate_services(db, request.id)
-        return result
-    except ValueError as e:
-        raise HTTPException(status_code=404, detail=str(e))
-
-
-@router.post("/add-rate/", response_model=AddRateRespons)
-async def add_rate(request: AddRateRequest, db: AsyncSession = Depends(get_db)):
-    try:
-        result = await add_rate_services(db, request.date_request, request.cargo_type, request.rate)
         return result
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
