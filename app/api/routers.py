@@ -25,7 +25,7 @@ async def calculate_insurance(request: InsuranceRequest, db: AsyncSession = Depe
         raise HTTPException(status_code=404, detail=str(e))
 
 
-@router.delete("/edit-insurance/", response_model=EditRateResponse)
+@router.patch("/edit-insurance/", response_model=EditRateResponse)
 async def edit_insurance(request: EditRateRequest, db: AsyncSession = Depends(get_db)):
     """
     Асинхронный эндпоинт для редактирования тарифа.
@@ -40,7 +40,7 @@ async def edit_insurance(request: EditRateRequest, db: AsyncSession = Depends(ge
         raise HTTPException(status_code=404, detail=str(e))
 
 
-@router.post("/delete-rate/", response_model=DeleteRateRespons)
+@router.delete("/delete-rate/", response_model=DeleteRateRespons)
 async def add_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get_db)):
     """
     Асинхронный эндпоинт для удаления тарифа.
