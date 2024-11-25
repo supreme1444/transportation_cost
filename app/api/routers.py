@@ -26,7 +26,7 @@ async def calculate_insurance(request: InsuranceRequest, db: AsyncSession = Depe
 
 
 @router.patch("/edit-insurance/", response_model=EditRateResponse)
-async def edit_insurance(request: EditRateRequest, db: AsyncSession = Depends(get_db)):
+async def edit_rate(request: EditRateRequest, db: AsyncSession = Depends(get_db)):
     """
     Асинхронный эндпоинт для редактирования тарифа.
     Введите id тарифа "id-3"и отредактируйте его условия.
