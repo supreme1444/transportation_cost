@@ -12,12 +12,12 @@ async def get_rate(db: AsyncSession, date: datetime, cargo_type: str):
     Асинхронный эндпоинт для расчета стоимости страховки.
     """
     result = await db.execute(
-        select(Tariff).where(Tariff.date == date, Tariff.cargo_type == cargo_type)
+        select(Tariff).where(Tariff.date == date.date(), Tariff.cargo_type == cargo_type)
     )
     log_event(
         user_id=None,
-        action=f"Получение тарифа для типа груза '{cargo_type}' на дату {date}",
-        timestamp=datetime.utcnow().isoformat()
+        action=f"Получение тарифа для типа груза '{cargo_type}' на дату {date.date().isoformat()}",
+        timestamp=datetime.utcnow().date().isoformat()
     )
     return result.scalar_one_or_none()
 
@@ -42,7 +42,7 @@ async def edit_insurance_rate(db: AsyncSession, id: int, new_edit_rate: float, n
     log_event(
         user_id=None,
         action=f"Редактирование тарифа ID {id}: новый тариф {new_edit_rate}, новый тип груза {new_edit_cargo}",
-        timestamp=datetime.utcnow().isoformat()
+        timestamp=datetime.utcnow().date().isoformat()
     )
 
     await db.commit()
@@ -59,11 +59,12 @@ async def delete_insurance_rate(db: AsyncSession, id: int):
     log_event(
         user_id=None,
         action=f"Удаление тарифа ID {id}",
-        timestamp=datetime.utcnow().isoformat())
+        timestamp=datetime.utcnow().date().isoformat()
+    )
     await db.delete(delete_tariff)
     await db.commit()
     return delete_tariff
-    
+
 
 async def add_insurance_rate(db: AsyncSession, date: datetime, cargo: str, rate: float):
     log_event(
