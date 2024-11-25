@@ -29,13 +29,3 @@ class DeleteRateRequest(BaseModel):
 
 class DeleteRateRespons(BaseModel):
     message: str
-
-
-class AddRateRequest(BaseModel):
-    date_request: date
-    cargo_type: str
-    rate: float
-
-
-class AddRateRespons(BaseModel):
-    message: str
