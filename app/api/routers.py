@@ -41,7 +41,7 @@ async def edit_insurance(request: EditRateRequest, db: AsyncSession = Depends(ge
 
 
 @router.delete("/delete-rate/", response_model=DeleteRateRespons)
-async def add_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get_db)):
+async def delete_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get_db)):
     """
     Асинхронный эндпоинт для удаления тарифа.
     Введите id тарифа какой хотите удалить.
