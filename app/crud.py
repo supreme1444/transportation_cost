@@ -8,9 +8,6 @@ from logger import log_event
 
 
 async def get_rate(db: AsyncSession, date: datetime, cargo_type: str):
-    """
-    Асинхронный эндпоинт для расчета стоимости страховки.
-    """
     result = await db.execute(
         select(Tariff).where(Tariff.date == date.date(), Tariff.cargo_type == cargo_type)
     )
@@ -31,9 +28,6 @@ async def get_id_rate(db: AsyncSession, id: int):
 
 
 async def edit_insurance_rate(db: AsyncSession, id: int, new_edit_rate: float, new_edit_cargo: str):
-    """
-    Асинхронная функция для редактирования тарифа.
-    """
     tariff = await get_id_rate(db, id)
     if not tariff:
         raise ValueError("Тариф не найден")
@@ -50,9 +44,6 @@ async def edit_insurance_rate(db: AsyncSession, id: int, new_edit_rate: float, n
 
 
 async def delete_insurance_rate(db: AsyncSession, id: int):
-    """
-    Асинхронная функция для удаления тарифа по его уникальному идентификатору (id).
-    """
     delete_tariff = await get_id_rate(db, id)
     if not delete_tariff:
         raise ValueError("Тариф не найден")
