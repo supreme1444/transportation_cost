@@ -4,8 +4,7 @@ from app.schemas.schemas_tariff import (InsuranceRequest, InsuranceResponse,
                                         EditRateResponse,
                                         EditRateRequest, DeleteRateRespons, DeleteRateRequest, )
 from app.database.database import get_db
-from app.services.services import calculate_insurance_cost, edit_insurance_services, delete_rate_services, \
-    add_rate_services
+from app.services.services import calculate_insurance_cost, edit_insurance_services, delete_rate_services
 
 router = APIRouter()
 
