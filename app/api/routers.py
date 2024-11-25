@@ -2,8 +2,8 @@ from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.schemas.schemas_tariff import (InsuranceRequest, InsuranceResponse,
-                                        EditRateResponse, AddRateRequest,
-                                        EditRateRequest, AddRateRespons)
+                                        EditRateResponse, DeleteRateRequest,
+                                        EditRateRequest, DeleteRateRespons)
 from app.database.database import get_db
 from app.services.services import calculate_insurance_cost, edit_insurance_services, delete_rate_services
 
@@ -40,8 +40,8 @@ async def edit_insurance(request: EditRateRequest, db: AsyncSession = Depends(ge
         raise HTTPException(status_code=404, detail=str(e))
 
 
-@router.post("/delete-rate/", response_model=AddRateRespons)
-async def add_rate(request: AddRateRequest, db: AsyncSession = Depends(get_db)):
+@router.post("/delete-rate/", response_model=DeleteRateRespons)
+async def add_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get_db)):
     """
     Асинхронный эндпоинт для добавления тарифа.
     Введите id тарифа какой хотите удалить.
