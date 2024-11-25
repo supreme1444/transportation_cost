@@ -18,14 +18,10 @@ async def edit_insurance_services(db: AsyncSession, id_rate: int, new_edit_rate:
 
 
 async def delete_rate_services(db: AsyncSession, id_rate: int):
-    delete_rate = await delete_insurance_rate(db, id_rate)
-    if not delete_rate:
-        raise ValueError("Тариф не найден")
-    return delete_rate
+    result = await delete_insurance_rate(db, id_rate)
+    return result
 
 
 async def add_rate_services(db: AsyncSession, date_request: datetime, cargo: str, rate: float):
     add_rate = await add_insurance_rate(db, date_request, cargo, rate)
-    if not add_rate:
-        raise ValueError("Тариф не найден")
-    return add_rate
+    return {"message": "Тариф успешно добавлен.", "rate": add_rate}
