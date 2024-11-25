@@ -53,3 +53,14 @@ async def delete_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get
         }
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
+
+@router.post("/add-rate/", response_model=AddRateRespons)
+async def add_rate(request: AddRateRequest, db: AsyncSession = Depends(get_db)):
+    try:
+        await add_rate_services(db, request.date_request, request.cargo_type, request.rate)
+        return {
+            "message": "Тариф добавлен."
+        }
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
