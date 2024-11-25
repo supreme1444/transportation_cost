@@ -20,8 +20,3 @@ async def edit_insurance_services(db: AsyncSession, id_rate: int, new_edit_rate:
 async def delete_rate_services(db: AsyncSession, id_rate: int):
     result = await delete_insurance_rate(db, id_rate)
     return result
-
-
-async def add_rate_services(db: AsyncSession, date_request: datetime, cargo: str, rate: float):
-    add_rate = await add_insurance_rate(db, date_request, cargo, rate)
-    return {"message": "Тариф успешно добавлен.", "rate": add_rate}
