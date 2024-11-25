@@ -62,15 +62,3 @@ async def delete_insurance_rate(db: AsyncSession, id: int):
     await db.delete(delete_tariff)
     await db.commit()
     return {"message": "Тариф успешно удален."}
-
-
-async def add_insurance_rate(db: AsyncSession, date: datetime, cargo: str, rate: float):
-    log_event(
-        user_id=None,
-        action=f"Добавление тарифа на дату {date.isoformat()} для типа груза {cargo} с тарифом {rate}",
-        timestamp=datetime.utcnow().isoformat()
-    )
-    new_rate = Tariff(date=date, cargo_type=cargo, rate=rate)
-    db.add(new_rate)
-    await db.commit()
-    return new_rate
