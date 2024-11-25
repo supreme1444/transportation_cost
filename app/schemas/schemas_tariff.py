@@ -1,10 +1,9 @@
-from datetime import datetime
-
+from datetime import  date
 from pydantic import BaseModel
 
 
 class InsuranceRequest(BaseModel):
-    date_request: datetime
+    date_request: date
     cargo_type: str
     declared_value: float
 
@@ -29,4 +28,14 @@ class DeleteRateRequest(BaseModel):
 
 
 class DeleteRateRespons(BaseModel):
+    message: str
+
+
+class AddRateRequest(BaseModel):
+    date_request: date
+    cargo_type: str
+    rate: float
+
+
+class AddRateRespons(BaseModel):
     message: str
