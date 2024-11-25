@@ -17,13 +17,13 @@ async def get_rate(db: AsyncSession, date: datetime, cargo_type: str):
     return result.scalar_one_or_none()
 
 
-async def get_id_rate(db: AsyncSession, id: int):
-    result = await db.execute(select(Tariff).filter_by(id=id))
+async def get_id_rate(db: AsyncSession, id_rate: int):
+    result = await db.execute(select(Tariff).filter_by(id=id_rate))
     return result.scalar_one_or_none()
 
 
-async def edit_insurance_rate(db: AsyncSession, id: int, new_edit_rate: float, new_edit_cargo: str):
-    tariff = await get_id_rate(db, id)
+async def edit_insurance_rate(db: AsyncSession, id_rate: int, new_edit_rate: float, new_edit_cargo: str):
+    tariff = await get_id_rate(db, id_rate)
     if not tariff:
         raise ValueError("Тариф не найден")
     tariff.rate = new_edit_rate
@@ -38,8 +38,8 @@ async def edit_insurance_rate(db: AsyncSession, id: int, new_edit_rate: float, n
     return tariff
 
 
-async def delete_insurance_rate(db: AsyncSession, id: int):
-    delete_tariff = await get_id_rate(db, id)
+async def delete_insurance_rate(db: AsyncSession, id_rate: int):
+    delete_tariff = await get_id_rate(db, id_rate)
     if not delete_tariff:
         raise ValueError("Тариф не найден")
     log_event(
