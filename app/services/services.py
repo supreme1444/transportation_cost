@@ -38,6 +38,4 @@ async def add_rate_services(db: AsyncSession, date_request: datetime, cargo: str
      """
     Функция для добавления страховых услуг.
     """
-    if not add_rate:
-        raise ValueError("Тариф не найден")
     return add_rate
