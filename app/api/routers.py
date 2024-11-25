@@ -2,8 +2,9 @@ from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.schemas.schemas_tariff import (InsuranceRequest, InsuranceResponse,
-                                        EditRateResponse, DeleteRateRequest,
-                                        EditRateRequest, DeleteRateRespons)
+                                        EditRateResponse,
+                                        EditRateRequest, DeleteRateRespons, DeleteRateRequest, AddRateRespons,
+                                        AddRateRequest, )                                                                     
 from app.database.database import get_db
 from app.services.services import calculate_insurance_cost, edit_insurance_services, delete_rate_services
 
