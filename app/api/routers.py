@@ -10,6 +10,7 @@ from app.services.services import calculate_insurance_cost, edit_insurance_servi
 
 router = APIRouter()
 
+
 @router.post("/calculate-insurance/", response_model=InsuranceResponse)
 async def calculate_insurance(request: InsuranceRequest, db: AsyncSession = Depends(get_db)):
     """
@@ -23,6 +24,7 @@ async def calculate_insurance(request: InsuranceRequest, db: AsyncSession = Depe
         return InsuranceResponse(cost=cost)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
 
 @router.patch("/edit-rate/", response_model=EditRateResponse)
 async def edit_rate(request: EditRateRequest, db: AsyncSession = Depends(get_db)):
@@ -38,6 +40,7 @@ async def edit_rate(request: EditRateRequest, db: AsyncSession = Depends(get_db)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+
 @router.delete("/delete-rate/", response_model=DeleteRateRespons)
 async def delete_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get_db)):
     """
@@ -49,6 +52,7 @@ async def delete_rate(request: DeleteRateRequest, db: AsyncSession = Depends(get
         return result
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
 
 @router.post("/add-rate/", response_model=AddRateRespons)
 async def add_rate(request: AddRateRequest, db: AsyncSession = Depends(get_db)):
