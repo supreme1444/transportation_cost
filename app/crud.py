@@ -1,8 +1,6 @@
 from datetime import datetime
-
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
-
 from app.models.models_tariff import Tariff
 from logger import log_event
 
