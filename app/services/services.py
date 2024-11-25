@@ -4,9 +4,6 @@ from app.crud import get_rate, edit_insurance_rate, delete_insurance_rate, add_i
 
 
 async def calculate_insurance_cost(db: AsyncSession, date: datetime, cargo_type: str, declared_value: float) -> float:
-    """
-    Асинхронный эндпоинт для расчета стоимости страховки.
-    """
     rate = await get_rate(db, date, cargo_type)
     if not rate:
         raise ValueError("Тариф не найден")
@@ -14,9 +11,6 @@ async def calculate_insurance_cost(db: AsyncSession, date: datetime, cargo_type:
 
 
 async def edit_insurance_services(db: AsyncSession, id: int, new_edit_rate: float, new_edit_cargo: str):
-    """
-    Функция для редактирования страховых услуг.
-    """
     edited_tariff = await edit_insurance_rate(db, id, new_edit_rate, new_edit_cargo)
     if not edited_tariff:
         raise ValueError("Тариф не найден")
@@ -24,9 +18,6 @@ async def edit_insurance_services(db: AsyncSession, id: int, new_edit_rate: floa
 
 
 async def delete_rate_services(db: AsyncSession, id: int):
-    """
-    Функция для удаления страховых услуг.
-    """
     delete_rate = await delete_insurance_rate(db, id)
     if not delete_rate:
         raise ValueError("Тариф не найден")
